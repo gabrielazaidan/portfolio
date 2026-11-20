@@ -1,0 +1,968 @@
+:root {
+    --creme: #efe1ce;
+    --creme-claro: #f7efe4;
+    --preto: #1c0b12;
+    --vinho: #721d35;
+    --rose: #b9857c;
+    --bordo: #42121f;
+    --branco: #ffffff;
+    --cinza: #6f6265;
+    --linha: rgba(28, 11, 18, 0.16);
+    --linha-branca: rgba(255, 255, 255, 0.22);
+
+    --hero-1: #1c0b12;
+    --hero-2: #42121f;
+    --hero-3: #721d35;
+    --hero-4: #5b172b;
+
+    --texto-sobre: #5f5559;
+    --rodape: #0e0c0d;
+}
+
+body.tema-escuro {
+    --creme: #171316;
+    --creme-claro: #211c1f;
+    --preto: #f4eee8;
+    --vinho: #a94d68;
+    --rose: #d49a91;
+    --bordo: #351722;
+    --branco: #ffffff;
+    --cinza: #c2b8bb;
+    --linha: rgba(255, 255, 255, 0.18);
+    --linha-branca: rgba(255, 255, 255, 0.22);
+
+    --hero-1: #090709;
+    --hero-2: #211018;
+    --hero-3: #4b1c2d;
+    --hero-4: #32131f;
+
+    --texto-sobre: #d4c9cc;
+    --rodape: #090809;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--creme);
+    color: var(--preto);
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.menu-aberto {
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: min(1200px, 88%);
+    margin: 0 auto;
+}
+
+.eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 78px;
+    padding: 0 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--branco);
+    z-index: 20;
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+    letter-spacing: -0.08em;
+}
+
+.logo::after {
+    content: ".";
+    color: var(--rose);
+}
+
+.nav {
+    display: flex;
+    gap: 2.2rem;
+    align-items: center;
+}
+
+.nav a {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.nav a:hover {
+    color: var(--rose);
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    margin: 5px 0;
+    background: var(--branco);
+    transition: 0.3s ease;
+}
+
+.hero {
+    min-height: 100vh;
+    padding: 115px 6vw 70px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4vw;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    color: var(--branco);
+    background:
+        radial-gradient(circle at 75% 20%, rgba(185, 133, 124, 0.38), transparent 25%),
+        radial-gradient(circle at 25% 75%, rgba(114, 29, 53, 0.45), transparent 30%),
+        linear-gradient(
+            135deg,
+            var(--hero-1),
+            var(--hero-2) 48%,
+            var(--hero-3) 75%,
+            var(--hero-4)
+        );
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    right: -250px;
+    top: -300px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: -300px;
+    bottom: -300px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.hero-content,
+.hero-visual {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-topo {
+    display: flex;
+    justify-content: space-between;
+    max-width: 850px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.hero-titulo {
+    margin: 2.4rem 0 2rem;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(5rem, 13vw, 10.5rem);
+    line-height: 0.72;
+    letter-spacing: -0.09em;
+    text-transform: uppercase;
+}
+
+.titulo-fino {
+    display: block;
+    font-weight: 400;
+}
+
+.titulo-forte {
+    display: block;
+    font-weight: 700;
+    margin-left: 4vw;
+}
+
+.hero-intro {
+    max-width: 560px;
+    margin-left: 4vw;
+}
+
+.hero-intro .eyebrow {
+    color: var(--rose);
+}
+
+.hero h1 {
+    margin: 0.7rem 0 1.3rem;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.5rem, 5vw, 4.8rem);
+    line-height: 0.95;
+    font-weight: 500;
+}
+
+.hero h1 em {
+    color: var(--rose);
+    font-weight: 400;
+}
+
+.hero-descricao {
+    max-width: 500px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.92rem;
+}
+
+.hero-acoes {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 1.8rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.button-filled {
+    background: var(--creme);
+    color: var(--preto);
+}
+
+.button-filled:hover {
+    background: var(--rose);
+    color: var(--branco);
+}
+
+.button-link {
+    color: var(--branco);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.button-link:hover {
+    color: var(--rose);
+}
+
+.button-link span {
+    font-size: 1rem;
+}
+
+.hero-visual {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagem-principal {
+    width: min(78%, 420px);
+    aspect-ratio: 4 / 5;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transform: rotate(2deg);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 25px 25px 0 rgba(53, 29, 42, 0.35);
+}
+
+.imagem-principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imagem-secundaria {
+    position: absolute;
+    width: 170px;
+    height: 220px;
+    right: 3%;
+    bottom: 4%;
+    padding: 7px;
+    background: var(--creme);
+    transform: rotate(-7deg);
+    box-shadow: 12px 12px 0 rgba(53, 29, 42, 0.3);
+}
+
+.imagem-secundaria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.numero {
+    position: absolute;
+    left: 4%;
+    bottom: 12%;
+    font-family: "Playfair Display", serif;
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.sobre {
+    padding: 100px 0;
+    background: var(--creme);
+}
+
+.secao-cabecalho {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.numero-secao {
+    color: var(--vinho);
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+}
+
+.secao-cabecalho h2 {
+    margin-top: 0.7rem;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.9;
+    font-weight: 500;
+}
+
+.sobre-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 7vw;
+    align-items: center;
+}
+
+.sobre-destaque {
+    min-height: 450px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--branco);
+    background: linear-gradient(135deg, var(--rose), var(--vinho));
+    transform: rotate(-2deg);
+    box-shadow: 25px 25px 0 rgba(53, 29, 42, 0.12);
+}
+
+.frase {
+    max-width: 450px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.1rem, 4vw, 3.5rem);
+    line-height: 1;
+}
+
+.mini-detalhe {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--linha-branca);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+}
+
+.sobre-texto {
+    color: var(--texto-sobre);
+}
+
+.sobre-texto p {
+    margin-bottom: 1.2rem;
+}
+
+.tecnologias {
+    margin-top: 2.2rem;
+}
+
+.tecnologias .eyebrow {
+    color: var(--preto);
+    margin-bottom: 1rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.tags span {
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--linha);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.faixa {
+    overflow: hidden;
+    background: var(--preto);
+    color: var(--creme);
+    padding: 1.2rem 0;
+}
+
+.faixa-conteudo {
+    display: flex;
+    width: max-content;
+    gap: 2rem;
+    font-family: "Playfair Display", serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    animation: moverFaixa 25s linear infinite;
+}
+
+@keyframes moverFaixa {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-30%);
+    }
+}
+
+.hobbies {
+    padding: 100px 0;
+    background: var(--creme-claro);
+}
+
+.hobbies-intro {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: 3rem;
+}
+
+.hobbies-intro > p {
+    max-width: 500px;
+    color: var(--cinza);
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filtros button {
+    border: 1px solid var(--linha);
+    background: transparent;
+    color: var(--preto);
+    padding: 0.65rem 0.9rem;
+    cursor: pointer;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.filtros button:hover,
+.filtros button.ativo {
+    border-color: var(--vinho);
+    background: var(--vinho);
+    color: var(--branco);
+}
+
+.grade-hobbies {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr 0.7fr;
+    grid-template-rows: 300px 300px;
+    gap: 1rem;
+}
+
+.hobby {
+    position: relative;
+    overflow: hidden;
+}
+
+.hobby-destaque {
+    grid-row: span 2;
+    min-height: 100%;
+    background: var(--bordo);
+}
+
+.hobby-destaque img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.hobby-destaque:hover img {
+    transform: scale(1.05);
+}
+
+.hobby-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(
+        to top,
+        rgba(23, 19, 21, 0.8),
+        transparent 55%
+    );
+    color: var(--branco);
+}
+
+.hobby-numero {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+}
+
+.hobby-categoria {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.hobby h3 {
+    margin: 0.3rem 0;
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.hobby-overlay p:last-child,
+.hobby-card p:last-child {
+    font-size: 0.75rem;
+    opacity: 0.72;
+}
+
+.hobby-card {
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: var(--rose);
+    color: var(--branco);
+}
+
+.hobby-card.escuro {
+    background: var(--bordo);
+}
+
+.hobby-card.claro {
+    background: var(--creme);
+    color: var(--preto);
+}
+
+.hobby-card.destaque {
+    background: var(--vinho);
+}
+
+.hobby-card-top {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+}
+
+.hobby-icone {
+    margin-bottom: auto;
+    font-size: 3rem;
+}
+
+.hobby-card .hobby-categoria {
+    margin-bottom: 0.2rem;
+}
+
+.hobby-card h3 {
+    font-size: 2rem;
+}
+
+.hobby.oculto {
+    display: none;
+}
+
+.contato {
+    padding: 100px 0;
+    background: var(--bordo);
+    color: var(--branco);
+}
+
+.contato-topo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.contato-topo .eyebrow {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.contato-titulo {
+    max-width: 850px;
+    margin: 4rem 0;
+}
+
+.contato-titulo h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.9;
+    font-weight: 500;
+}
+
+.contato-titulo em {
+    color: var(--rose);
+    font-weight: 400;
+}
+
+.contato-titulo p {
+    max-width: 450px;
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, 0.58);
+}
+
+.contatos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--linha-branca);
+}
+
+.contato-card {
+    min-height: 220px;
+    padding: 1.5rem;
+    border-right: 1px solid var(--linha-branca);
+    border-bottom: 1px solid var(--linha-branca);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: transparent;
+    color: var(--branco);
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.contato-card:first-child {
+    border-left: 1px solid var(--linha-branca);
+}
+
+.contato-card:hover {
+    background: var(--rose);
+    color: var(--preto);
+}
+
+.contato-icone {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.contato-tipo {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    opacity: 0.6;
+}
+
+.contato-card strong {
+    font-size: 0.85rem;
+    word-break: break-word;
+}
+
+.seta {
+    align-self: flex-end;
+    font-size: 1.3rem;
+}
+
+.rodape {
+    padding: 1.3rem 0;
+    background: var(--rodape);
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+}
+
+.rodape-conteudo {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.tema-toggle {
+    width: 38px;
+    height: 38px;
+    margin-left: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.tema-toggle:hover {
+    background: var(--rose);
+    border-color: var(--rose);
+    transform: rotate(15deg);
+}
+
+@media (max-width: 950px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 110px;
+    }
+
+    .hero-visual {
+        min-height: 500px;
+    }
+
+    .imagem-principal {
+        width: min(65%, 400px);
+    }
+
+    .sobre-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre-destaque {
+        max-width: 600px;
+    }
+
+    .grade-hobbies {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 400px 300px 300px;
+    }
+
+    .hobby-destaque {
+        grid-row: span 1;
+        grid-column: span 2;
+    }
+
+    .contatos {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contato-card {
+        border-left: 1px solid var(--linha-branca);
+    }
+}
+
+@media (max-width: 700px) {
+    .header {
+        min-height: 68px;
+        padding: 0 6vw;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav {
+        position: fixed;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        padding: 2rem 6vw;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.4rem;
+        background: var(--bordo);
+    }
+
+    .nav.aberto {
+        display: flex;
+    }
+
+    .tema-toggle {
+        margin-left: 0;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 100px 6vw 60px;
+    }
+
+    .hero-topo {
+        font-size: 0.55rem;
+    }
+
+    .hero-titulo {
+        font-size: clamp(4rem, 18vw, 7rem);
+    }
+
+    .hero-intro {
+        margin-left: 0;
+    }
+
+    .hero-visual {
+        min-height: 400px;
+    }
+
+    .imagem-principal {
+        width: 75%;
+    }
+
+    .imagem-secundaria {
+        width: 130px;
+        height: 170px;
+    }
+
+    .numero {
+        bottom: 5%;
+    }
+
+    .sobre,
+    .hobbies,
+    .contato {
+        padding: 70px 0;
+    }
+
+    .secao-cabecalho {
+        margin-bottom: 2.5rem;
+    }
+
+    .secao-cabecalho h2 {
+        font-size: clamp(2.8rem, 14vw, 5rem);
+    }
+
+    .sobre-destaque {
+        min-height: 360px;
+        padding: 2rem;
+    }
+
+    .frase {
+        font-size: 2.2rem;
+    }
+
+    .hobbies-intro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .grade-hobbies {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hobby {
+        min-height: 280px;
+    }
+
+    .hobby-destaque {
+        min-height: 380px;
+    }
+
+    .contatos {
+        grid-template-columns: 1fr;
+    }
+
+    .contato-card {
+        min-height: 180px;
+    }
+
+    .rodape-conteudo {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .faixa-conteudo {
+        animation: none;
+    }
+
+    * {
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.hobby-card.com-foto {
+    color: var(--branco);
+}
+
+.hobby-card.com-foto > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+.hobby-card.com-foto::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(23, 19, 21, 0.85), transparent 65%);
+    z-index: 1;
+}
+
+.hobby-card.com-foto > *:not(img) {
+    z-index: 2;
+}
+
+.grade-hobbies.filtrada {
+    grid-template-columns: repeat(auto-fill, 305px);
+    grid-template-rows: 300px 300px;
+}
+
+.grade-hobbies.filtrada .hobby-destaque {
+    grid-column: span 2;
+}
